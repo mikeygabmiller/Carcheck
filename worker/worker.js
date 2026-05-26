@@ -1634,42 +1634,36 @@ ${complaints.components.map((c) => `- ${c.name}: ${c.count} complaints`).join("\
 OUTPUT FORMAT — return ONLY valid JSON in this exact shape, no markdown fences:
 
 {
-  "verdict": "BUY" | "PASS" | "INSPECT FIRST",
-  "subject": "YEAR MAKE MODEL",
-  "location": "City, State" or null,
-  "asking_price": ${price},
-  "market_value": {
-    "estimate": <number — average private party sale price>,
-    "delta_text": "$X under" | "$X over" | "fair price",
-    "delta_class": "good" | "bad" | "warn"
-  },
-  "reliability": {
-    "score": "X / 10",
-    "detail": "short phrase",
-    "class": "good" | "bad" | "warn"
-  },
-  "scam_risk": {
-    "level": "LOW" | "MED" | "HIGH",
-    "detail": "short phrase",
-    "class": "good" | "bad" | "warn"
-  },
-  "first_car": {
-    "verdict": "GOOD FIT" | "HARD NO" | "MAYBE",
-    "detail": "short phrase",
-    "class": "good" | "bad" | "warn"
-  },
-  "prior_offenses": [
-    "specific problems pulled from research + NHTSA — be precise",
-    "3-5 items total"
+  "subject": "YEAR MAKE MODEL · MILEAGE mi (e.g. '2017 Honda Civic LX · 87,400 mi')",
+  "grade": "A+ | A | A- | B+ | B | B- | C+ | C | C- | D+ | D | F",
+  "gradeBurn": "ONE punchy sentence explaining the grade. Honest, casual, specific. Like a one-liner you'd text a friend. Max 20 words.",
+  "asking": ${price},
+  "fairLow": <number — low end of fair private-party price for this car/mileage/condition in PNW>,
+  "fairHigh": <number — high end of fair price>,
+  "priceVerdict": "Underpriced | Fair | Overpriced",
+  "watch": [
+    "3-5 specific problems pulled from research + NHTSA",
+    "Each item is one line, specific, actionable",
+    "Include rough repair cost when known"
   ],
-  "mikey_note": "4-6 sentences. Casual. Honest. Reference specific data points. Mention one thing to check at inspection. End with a real action the buyer should take."
+  "note": "4-6 sentences. Casual. Honest. Reference specific data. Suggest one thing to check at inspection. End with a real action — usually an offer amount or a walk-away.",
+  "sellerMessage": "A polite message to send the seller via Marketplace. 2-4 sentences. Use the watch items and fair price as leverage. End with a specific cash offer amount. Sound like a real buyer texting, not corporate. Example: 'Hey — interested in the Civic. I noticed [specific concern from watch list]. Comparable ones around here are listing $X-Y. I can pick up this week with cash for $Z. Let me know.'"
 }
 
+GRADING RUBRIC:
+- A: Great deal. Reliable car, fair or underpriced, no major red flags. Buy.
+- B: Solid. Minor concerns or slightly overpriced, but a normal used car deal.
+- C: Mixed. Worth inspecting but has real problems — pricing, reliability, or trust.
+- D: Risky. Overpriced, problematic model, or red flags in the listing.
+- F: Walk away. Likely scam, salvage, or known disaster car. Hard pass.
+
 RULES:
-- If listing seems fake (stolen photos, sketchy low price, copy-paste vague description): scam_risk HIGH, verdict PASS.
+- If listing seems fake (stolen photos, sketchy low price, copy-paste vague description): grade F.
 - Market value: trust research notes when present. PNW prices skew slightly higher.
-- Prior offenses: prefer real NHTSA + research data over guessing.
-- If asking > 15% over your market estimate, market_value.delta_class is "bad".
+- Watch list: prefer real NHTSA + research data over guessing.
+- If asking > 15% over fairHigh, priceVerdict is "Overpriced" and grade drops at least one letter.
+- If asking < fairLow by 10%+ and listing looks legit, priceVerdict is "Underpriced".
+- Subject MUST include mileage if mentioned in listing.
 - Output JSON only. No code fences.`;
 
   return prompt;
