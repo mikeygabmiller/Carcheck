@@ -1256,8 +1256,8 @@ const generalKnowledge = {
       "Run the VIN through NMVTIS ($4)",
       "Test drive at highway speed",
       "Check service records"
-    ],
-    "do_not_say": 
+  ],
+    "do_not_say": [
       "Unleash",
       "Elevate",
       "Transform",
