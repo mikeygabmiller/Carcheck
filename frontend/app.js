@@ -3,7 +3,7 @@
 // UPDATE API_URL with your Deno Deploy URL after first deploy
 // ============================================================================
 
-const API_URL = "https://YOUR-APP-NAME.deno.net";
+const API_URL = "https://carcheck-gxevta8f8ba6.mikeygabmiller.deno.net/";
 
 // View elements
 const inputView = document.getElementById("input-view");
