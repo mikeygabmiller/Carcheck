@@ -1,0 +1,319 @@
+{
+  "_meta": {
+    "version": "1.0",
+    "last_updated": "2026-05-25",
+    "note": "Add entries as you spot patterns. Match strings are lowercase substrings."
+  },
+  "cars": {
+    "honda_civic_8th_gen": {
+      "match": ["honda civic"],
+      "years": [2006, 2007, 2008, 2009, 2010, 2011],
+      "engine": "1.8L R18 or 2.0L K20 (Si)",
+      "common_problems": [
+        { "issue": "Cracked engine block (2.0L Si)", "frequency": "documented", "cost_range": "$3,000+" },
+        { "issue": "AC compressor failure", "frequency": "common 100k+", "cost_range": "$800-1,200" },
+        { "issue": "Rear tire wear from alignment", "frequency": "common", "cost_range": "$100 alignment + tires" }
+      ],
+      "watch_for": ["Service history", "Tire wear pattern", "AC blows cold", "Si motor for block cracks"],
+      "good_first_car": true,
+      "first_car_reason": "Cheap to fix, parts everywhere, easy to drive",
+      "reliability_score": "8/10",
+      "market_notes": "Si commands premium. Manuals worth more. Watch for modded ones."
+    },
+    "honda_civic_modern": {
+      "match": ["honda civic"],
+      "years": [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+      "engine": "1.8L R18 / 2.0L / 1.5T L15B (16+)",
+      "common_problems": [
+        { "issue": "1.5T fuel dilution in oil", "frequency": "common in cold climates", "cost_range": "monitor + frequent oil changes" },
+        { "issue": "Infotainment glitches", "frequency": "common 16-18", "cost_range": "software update" },
+        { "issue": "AC condenser failures", "frequency": "common", "cost_range": "$600-900" }
+      ],
+      "watch_for": ["Oil level above max = fuel dilution", "Infotainment responsiveness", "AC works on hot day"],
+      "good_first_car": true,
+      "first_car_reason": "Reliable, cheap to own, good safety scores",
+      "reliability_score": "8/10",
+      "market_notes": "Holds value well. Si and Type R command premiums. 1.5T avoid for first car if you're in a cold climate."
+    },
+    "honda_accord": {
+      "match": ["honda accord"],
+      "years": [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017],
+      "engine": "2.4L K24 or 3.5L J35 V6",
+      "common_problems": [
+        { "issue": "V6 VCM oil consumption", "frequency": "very common on V6", "cost_range": "$2,000+ or VCM Muzzler $100" },
+        { "issue": "Power steering pump leaks", "frequency": "common", "cost_range": "$400-700" },
+        { "issue": "Starter failure 100k+", "frequency": "common", "cost_range": "$300-500" }
+      ],
+      "watch_for": ["V6 oil consumption", "Power steering noise", "Starter cranks fast"],
+      "good_first_car": true,
+      "first_car_reason": "4-cylinder bulletproof, avoid V6 for first car",
+      "reliability_score": "8/10",
+      "market_notes": "4-cylinder holds value better long-term. V6 is fast but expensive long-term."
+    },
+    "honda_crv": {
+      "match": ["honda cr-v", "honda crv", "honda cr v"],
+      "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.4L K24 or 1.5T L15B (17+)",
+      "common_problems": [
+        { "issue": "1.5T fuel dilution (17-19)", "frequency": "very common cold climate", "cost_range": "monitor or replace" },
+        { "issue": "AC compressor failure", "frequency": "common 100k+", "cost_range": "$900-1,300" },
+        { "issue": "Rear differential whine (AWD)", "frequency": "common", "cost_range": "$200 fluid service prevents" }
+      ],
+      "watch_for": ["Oil level high", "AC cold", "Rear diff service done"],
+      "good_first_car": true,
+      "first_car_reason": "Safe, tall driving position, AWD options",
+      "reliability_score": "8/10",
+      "market_notes": "Strong resale. 2.4L preferred over 1.5T."
+    },
+    "toyota_camry": {
+      "match": ["toyota camry"],
+      "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+      "engine": "2.4L / 2.5L / 3.5L V6",
+      "common_problems": [
+        { "issue": "Oil consumption (07-09 2AZ-FE)", "frequency": "very common", "cost_range": "Toyota extended warranty if eligible, otherwise $4,000 short block" },
+        { "issue": "Water pump leaks", "frequency": "common 100k+", "cost_range": "$400-600" },
+        { "issue": "VVT-i actuator rattle on cold start", "frequency": "common", "cost_range": "$200-400" }
+      ],
+      "watch_for": ["Oil level (especially 07-09)", "Cold start rattle", "Service records"],
+      "good_first_car": true,
+      "first_car_reason": "Bulletproof reputation, cheap parts, easy to insure",
+      "reliability_score": "9/10",
+      "market_notes": "Hybrid models gaining premium. Avoid 07-09 unless oil issue documented fixed."
+    },
+    "toyota_corolla": {
+      "match": ["toyota corolla"],
+      "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+      "engine": "1.8L 2ZR-FE",
+      "common_problems": [
+        { "issue": "Excessive oil consumption (09-11)", "frequency": "common", "cost_range": "$200/yr in oil or rebuild" },
+        { "issue": "EVAP system codes", "frequency": "common", "cost_range": "$100-300" },
+        { "issue": "MAF sensor", "frequency": "common 100k+", "cost_range": "$150-250" }
+      ],
+      "watch_for": ["Oil consumption history", "Check engine light", "Tire wear"],
+      "good_first_car": true,
+      "first_car_reason": "Cheapest reliable car to own, easy to learn on",
+      "reliability_score": "9/10",
+      "market_notes": "Boring but unkillable. Worst-case repairs are cheap."
+    },
+    "toyota_rav4": {
+      "match": ["toyota rav4", "toyota rav 4"],
+      "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.4L / 2.5L / 3.5L V6 (06-12)",
+      "common_problems": [
+        { "issue": "Transfer case actuator (AWD)", "frequency": "common", "cost_range": "$400-700" },
+        { "issue": "Oil consumption 2AZ (07-08)", "frequency": "common", "cost_range": "potentially major" },
+        { "issue": "Sunroof leaks", "frequency": "occasional", "cost_range": "$200-500 drain cleaning" }
+      ],
+      "watch_for": ["AWD engages smoothly", "Sunroof drains clear", "Headliner stains"],
+      "good_first_car": true,
+      "first_car_reason": "Reliable, safe, AWD for PNW winters",
+      "reliability_score": "8/10",
+      "market_notes": "AWD trims hold value. V6 (06-12) is fast and rare."
+    },
+    "toyota_tacoma": {
+      "match": ["toyota tacoma"],
+      "years": [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+      "engine": "2.7L 2TR-FE / 4.0L 1GR-FE V6 / 3.5L 2GR-FKS",
+      "common_problems": [
+        { "issue": "Frame rust (05-10)", "frequency": "common in salt states, less in PNW", "cost_range": "if severe, totaled" },
+        { "issue": "Leaf spring sag", "frequency": "common", "cost_range": "$400-800" },
+        { "issue": "3.5L gas mileage / lacks torque", "frequency": "characteristic", "cost_range": "n/a" }
+      ],
+      "watch_for": ["Frame condition (look underneath)", "Service records", "Mods - taco crowd loves to lift"],
+      "good_first_car": false,
+      "first_car_reason": "Way overpriced for what you get. Tacoma tax is real.",
+      "reliability_score": "9/10",
+      "market_notes": "Holds value better than almost anything. People pay stupid money for old Tacomas. PNW demand is bubble territory."
+    },
+    "toyota_4runner": {
+      "match": ["toyota 4runner", "toyota 4 runner"],
+      "years": [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "4.0L 1GR-FE V6",
+      "common_problems": [
+        { "issue": "Lower ball joints (03-09)", "frequency": "common", "cost_range": "$500-800" },
+        { "issue": "Pink milkshake (head gasket 4.0L early)", "frequency": "rare but serious", "cost_range": "$2,500+" },
+        { "issue": "Rear hatch glass actuator", "frequency": "common", "cost_range": "$300-500" }
+      ],
+      "watch_for": ["Coolant condition", "Ball joints clunk", "Frame underneath"],
+      "good_first_car": false,
+      "first_car_reason": "Heavy, hard to park, gas guzzler, overpriced",
+      "reliability_score": "9/10",
+      "market_notes": "Cult following. Holds value almost as well as Tacoma. PNW loves these."
+    },
+    "subaru_outback": {
+      "match": ["subaru outback"],
+      "years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.5L FB25 or 3.6L EZ36",
+      "common_problems": [
+        { "issue": "Head gasket leaks (older EJ25 pre-2011)", "frequency": "very common", "cost_range": "$2,000-3,000" },
+        { "issue": "CVT failures (10-14)", "frequency": "documented", "cost_range": "$5,000+" },
+        { "issue": "Oil consumption FB25 (11-14)", "frequency": "common", "cost_range": "extended warranty if eligible" }
+      ],
+      "watch_for": ["Coolant condition", "CVT shudder on takeoff", "Oil level"],
+      "good_first_car": true,
+      "first_car_reason": "AWD perfect for PNW, safe, practical",
+      "reliability_score": "7/10",
+      "market_notes": "PNW state car. Demand keeps prices high. Avoid 10-14 unless CVT/oil documented."
+    },
+    "subaru_forester": {
+      "match": ["subaru forester"],
+      "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.5L FB25 / 2.0XT turbo",
+      "common_problems": [
+        { "issue": "Oil consumption FB25 (11-14)", "frequency": "common", "cost_range": "monitor + frequent oil changes" },
+        { "issue": "Wheel bearings", "frequency": "common 100k+", "cost_range": "$300-500 per side" },
+        { "issue": "Cracked windshield (Eyesight cars cost more to replace)", "frequency": "common in PNW", "cost_range": "$800-1,500 with Eyesight" }
+      ],
+      "watch_for": ["Oil level", "Wheel bearing hum", "Windshield cracks"],
+      "good_first_car": true,
+      "first_car_reason": "AWD, safe, tall driving position, good visibility",
+      "reliability_score": "7/10",
+      "market_notes": "Eyesight models hold premium. Manual transmissions getting rare."
+    },
+    "subaru_impreza_wrx": {
+      "match": ["subaru wrx", "subaru sti", "subaru impreza"],
+      "years": [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.0/2.5L turbo (WRX/STI) or 2.0L FB20 (Impreza)",
+      "common_problems": [
+        { "issue": "Ringland failure (WRX 08-14)", "frequency": "very common when modded", "cost_range": "$3,500-6,000 rebuild" },
+        { "issue": "Blown turbos", "frequency": "common with abuse", "cost_range": "$1,500-3,000" },
+        { "issue": "Clutch wear (manual)", "frequency": "depends on driver", "cost_range": "$1,000-1,500" }
+      ],
+      "watch_for": ["Modifications (huge red flag)", "Smoke at WOT", "Clutch slip", "Boost gauges = abused"],
+      "good_first_car": false,
+      "first_car_reason": "Insurance brutal, easily modded, blown by previous owner 90% chance",
+      "reliability_score": "5/10",
+      "market_notes": "Stock unmodded WRX is unicorn. Most are abused. STI insurance alone disqualifies first car."
+    },
+    "ford_f150": {
+      "match": ["ford f-150", "ford f150", "f-150", "ford f 150"],
+      "years": [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022],
+      "engine": "5.0L Coyote / 3.5L EcoBoost / 2.7L EcoBoost / 3.7L V6",
+      "common_problems": [
+        { "issue": "EcoBoost cam phasers rattle (3.5L 11-16)", "frequency": "very common", "cost_range": "$2,000-3,500" },
+        { "issue": "5.0L oil consumption (18+)", "frequency": "documented", "cost_range": "monitor, Ford TSB" },
+        { "issue": "Spark plug breakage 3-valve (early)", "frequency": "common older trucks", "cost_range": "$800-1,500 if broken" }
+      ],
+      "watch_for": ["Cam phaser rattle on cold start", "Oil consumption", "Bed rust (rare PNW)"],
+      "good_first_car": false,
+      "first_car_reason": "Insurance, fuel cost, parking nightmare for new driver",
+      "reliability_score": "7/10",
+      "market_notes": "5.0L Coyote preferred for reliability. EcoBoost more fun but more problems."
+    },
+    "chevy_silverado": {
+      "match": ["chevrolet silverado", "chevy silverado", "gmc sierra"],
+      "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "5.3L LMG/L83/L84 V8 / 6.2L V8 / 4.8L V8",
+      "common_problems": [
+        { "issue": "AFM lifter failure (5.3L 07-14)", "frequency": "very common", "cost_range": "$2,500-5,000" },
+        { "issue": "Oil consumption AFM", "frequency": "common", "cost_range": "AFM delete $1,000 or rebuild" },
+        { "issue": "Transmission shudder (8L90 17+)", "frequency": "common", "cost_range": "fluid service or replace" }
+      ],
+      "watch_for": ["AFM delete done", "Oil consumption", "Tick at idle"],
+      "good_first_car": false,
+      "first_car_reason": "Same as F-150 — too much truck, too much gas",
+      "reliability_score": "6/10",
+      "market_notes": "AFM-deleted trucks worth more to enthusiasts. 4.8L is bulletproof but rare."
+    },
+    "nissan_altima_sentra": {
+      "match": ["nissan altima", "nissan sentra"],
+      "years": [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.5L QR25DE / 2.0L MR20DE + JATCO CVT",
+      "common_problems": [
+        { "issue": "CVT failure (13-18)", "frequency": "very common 80-120k", "cost_range": "$3,500-5,000 replacement" },
+        { "issue": "CVT shudder/judder", "frequency": "early warning sign", "cost_range": "$8,000 if ignored" },
+        { "issue": "Steering lock recall", "frequency": "common Altima", "cost_range": "Nissan covers" }
+      ],
+      "watch_for": ["CVT shudder on highway acceleration", "Whining transmission", "Service records for CVT fluid"],
+      "good_first_car": false,
+      "first_car_reason": "CVT is a ticking time bomb. Walk away.",
+      "reliability_score": "4/10",
+      "market_notes": "Why these are cheap on Marketplace. Be very careful — they show up under $5k because they're broken."
+    },
+    "hyundai_kia_theta": {
+      "match": ["hyundai sonata", "hyundai santa fe", "hyundai tucson", "kia optima", "kia sorento", "kia sportage"],
+      "years": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
+      "engine": "2.0T / 2.4L Theta II GDI",
+      "common_problems": [
+        { "issue": "Theta II engine failure (rod knock)", "frequency": "VERY common — class action", "cost_range": "Hyundai/Kia warranty extension covers" },
+        { "issue": "Excessive oil consumption", "frequency": "very common", "cost_range": "leads to engine failure" },
+        { "issue": "KSDS (Knock Sensor Detection System) update", "frequency": "mandatory recall", "cost_range": "free at dealer" }
+      ],
+      "watch_for": ["KSDS update completed at dealer", "Engine knock at idle", "Oil consumption", "Service records"],
+      "good_first_car": true,
+      "first_car_reason": "ONLY if KSDS update is done and no oil consumption documented",
+      "reliability_score": "5/10",
+      "market_notes": "If engine fails, Hyundai/Kia must replace under settlement. Verify KSDS update before buying. Skip ones without records."
+    },
+    "jeep_wrangler": {
+      "match": ["jeep wrangler"],
+      "years": [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "3.8L EGH / 3.6L Pentastar / 2.0T Hurricane",
+      "common_problems": [
+        { "issue": "Death wobble (steering)", "frequency": "common after lifts", "cost_range": "$500-1,500 steering parts" },
+        { "issue": "Pentastar oil cooler leak", "frequency": "very common 3.6L", "cost_range": "$600-900" },
+        { "issue": "Soft top leaks/tears", "frequency": "wear item", "cost_range": "$500-1,500" }
+      ],
+      "watch_for": ["Death wobble at 50-60mph", "Oil cooler weep", "Top condition", "Mod evidence"],
+      "good_first_car": false,
+      "first_car_reason": "Rolls over easy, soft top theft, mods galore",
+      "reliability_score": "6/10",
+      "market_notes": "Holds value insanely well. JL (18+) better than JK. Avoid heavily modded ones."
+    },
+    "bmw_3series": {
+      "match": ["bmw 328i", "bmw 335i", "bmw 330i", "bmw 320i", "bmw 325i", "bmw 3 series", "bmw 3-series"],
+      "years": [2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+      "engine": "N52 / N54 / N55 / B58 / N20",
+      "common_problems": [
+        { "issue": "N54 high-pressure fuel pump failure (335i)", "frequency": "very common", "cost_range": "$1,500 covered under extended warranty" },
+        { "issue": "Oil filter housing gasket leak", "frequency": "very common all models", "cost_range": "$400-800" },
+        { "issue": "Valve cover gasket leak", "frequency": "very common", "cost_range": "$300-600" },
+        { "issue": "N20 timing chain (12-15)", "frequency": "documented failure", "cost_range": "$4,000-6,000" }
+      ],
+      "watch_for": ["Oil leaks everywhere", "HPFP code (335i)", "Service records mandatory", "Timing chain rattle"],
+      "good_first_car": false,
+      "first_car_reason": "Maintenance will bankrupt a new driver",
+      "reliability_score": "5/10",
+      "market_notes": "Cheap to buy, expensive to own. Annual repair costs $1,500-3,500. Only buy with full BMW service records."
+    },
+    "vw_jetta_golf": {
+      "match": ["volkswagen jetta", "vw jetta", "volkswagen golf", "vw golf", "volkswagen passat", "vw passat"],
+      "years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+      "engine": "2.0T TSI / 1.8T / 2.5L / 1.4T",
+      "common_problems": [
+        { "issue": "Timing chain tensioner (2.0T)", "frequency": "common before 2015", "cost_range": "$1,500-3,000 if it slips" },
+        { "issue": "Carbon buildup on intake valves", "frequency": "common all GDI", "cost_range": "$500-800 walnut blast" },
+        { "issue": "Water pump leaks", "frequency": "common", "cost_range": "$600-900" }
+      ],
+      "watch_for": ["Timing chain rattle on cold start", "Service records", "Carbon buildup at 80k+"],
+      "good_first_car": false,
+      "first_car_reason": "German maintenance cost trap",
+      "reliability_score": "6/10",
+      "market_notes": "Fun to drive, expensive long-term. Avoid pre-2015 2.0T unless tensioner done."
+    },
+    "mazda_3": {
+      "match": ["mazda 3", "mazda3"],
+      "years": [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "2.0L / 2.5L SkyActiv",
+      "common_problems": [
+        { "issue": "Clutch slave cylinder (manual)", "frequency": "common", "cost_range": "$400-600" },
+        { "issue": "AC condenser failure (rocks crack it)", "frequency": "common", "cost_range": "$600-900" },
+        { "issue": "Rust on rear wheel wells (older models)", "frequency": "common in salt states", "cost_range": "varies" }
+      ],
+      "watch_for": ["Wheel well rust (mostly older)", "AC works", "Clutch feel if manual"],
+      "good_first_car": true,
+      "first_car_reason": "Underrated reliable, fun to drive, safe, good fuel economy",
+      "reliability_score": "8/10",
+      "market_notes": "Undervalued vs Civic/Corolla. Better driving experience than either."
+    },
+    "ford_mustang": {
+      "match": ["ford mustang"],
+      "years": [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021],
+      "engine": "3.7L V6 / 5.0L Coyote V8 / 2.3T EcoBoost",
+      "common_problems": [
+        { "issue": "5.0L oil pan leak", "frequency": "common", "cost_range": "$600-900" },
+        { "issue": "Tick noise (5.0L)", "frequency": "common", "cost_range": "monitor or rebuild $4,000+" },
+        { "issue": "Differential whine (8.8 rear)", "frequency": "common", "cost_range": "$1,000+" }
+      ],
+      "watch_for": ["Modifications (huge red flag)", "Tire condition (burnout abuse)", "Tick at idle"],
+      "
