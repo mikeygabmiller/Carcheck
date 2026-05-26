@@ -16,7 +16,7 @@
 // INLINE DATA (was cars.json + knowledge.json)
 // Edit these objects directly to update car entries or general knowledge.
 // ============================================================================
-
+console.log("DEPLOYED VERSION: 2026-05-26-NEW-PROMPT");
 const carsKnowledgeBase = {
   "_meta": {
     "version": "1.0",
