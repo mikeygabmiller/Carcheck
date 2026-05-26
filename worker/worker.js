@@ -1632,7 +1632,7 @@ ${complaints.components.map((c) => `- ${c.name}: ${c.count} complaints`).join("\
   prompt += `
 
 OUTPUT FORMAT — return ONLY valid JSON in this exact shape, no markdown fences:
-
+CRITICAL: Use the EXACT key names below. Do NOT use "verdict", "asking_price", "market_value", "prior_offenses", or "mikey_note" — those are FORBIDDEN. The correct keys are: subject, grade, gradeBurn, asking, fairLow, fairHigh, priceVerdict, watch, note, sellerMessage.
 {
   "subject": "YEAR MAKE MODEL · MILEAGE mi (e.g. '2017 Honda Civic LX · 87,400 mi')",
   "grade": "A+ | A | A- | B+ | B | B- | C+ | C | C- | D+ | D | F",
