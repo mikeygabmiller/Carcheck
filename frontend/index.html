@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Opinion — Used Car Check by Mikey</title>
+  <meta name="description" content="Paste a used car listing. Get an honest report card grounded in real NHTSA data. Free, by Mikey at mikeysdetailing.com.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="brand">
+        <span class="brand-mark">SO</span>
+        <span class="brand-text">Second Opinion</span>
+      </a>
+      <a href="https://mikeysdetailing.com" class="brand-credit">by Mikey's Detailing</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- INPUT VIEW -->
+    <section id="input-view" class="view">
+      <h1 class="title">Should you buy this car?</h1>
+      <p class="sub">Paste a Marketplace or OfferUp listing. I'll cross-check it against NHTSA recalls, owner complaints, and my own research. Free. No signup.</p>
+
+      <form id="check-form" class="form-card">
+        <label class="field">
+          <span class="field-label">Listing text</span>
+          <textarea
+            id="listing"
+            name="listing"
+            rows="8"
+            required
+            placeholder="Paste the full listing here — title, description, mileage, condition, everything."></textarea>
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span class="field-label">Asking price ($)</span>
+            <input type="number" id="price" name="price" required min="100" step="50" placeholder="e.g. 8500">
+          </label>
+
+          <label class="field">
+            <span class="field-label">VIN <span class="hint">(optional)</span></span>
+            <input type="text" id="vin" name="vin" maxlength="17" placeholder="17 characters">
+          </label>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-primary">
+          <span class="btn-label">Get my second opinion</span>
+        </button>
+        <p class="disclaimer">Free. No data saved. 20 checks per IP per day.</p>
+      </form>
+
+      <section class="how-it-works">
+        <h2>How it works</h2>
+        <ol>
+          <li>You paste the listing.</li>
+          <li>I cross-check against NHTSA, my car database, and the asking price.</li>
+          <li>You get a verdict, problems to watch for, and my honest take.</li>
+        </ol>
+      </section>
+    </section>
+
+    <!-- LOADING VIEW -->
+    <section id="loading-view" class="view hidden">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p class="loading-text">Running the numbers...</p>
+        <p class="loading-sub">This takes 10-20 seconds.</p>
+      </div>
+    </section>
+
+    <!-- RESULT VIEW -->
+    <section id="result-view" class="view hidden">
+      <button id="back-btn" class="btn-back">← Check another</button>
+
+      <div id="verdict-card" class="verdict-card">
+        <div class="verdict-label">VERDICT</div>
+        <div id="verdict-value" class="verdict-value"></div>
+        <div id="verdict-subject" class="verdict-subject"></div>
+      </div>
+
+      <div id="stat-grid" class="stat-grid"></div>
+
+      <div id="prior-offenses" class="watch-card">
+        <h3>Watch for these</h3>
+        <ul id="prior-offenses-list"></ul>
+      </div>
+
+      <div id="mikey-note" class="mikey-note">
+        <div class="mikey-note-label">— Mikey</div>
+        <p id="mikey-note-text"></p>
+      </div>
+
+      <div id="sources" class="sources"></div>
+    </section>
+
+    <!-- ERROR VIEW -->
+    <section id="error-view" class="view hidden">
+      <div class="error-card">
+        <h2>Something went wrong</h2>
+        <p id="error-text"></p>
+        <button id="error-back-btn" class="btn-primary">Try again</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Not a substitute for an in-person inspection. Always get a PPI before buying.</p>
+      <p><a href="https://mikeysdetailing.com">mikeysdetailing.com</a></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
