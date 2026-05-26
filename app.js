@@ -228,7 +228,7 @@
   // ---------------------------------------------------------------------------
   // Backend call — hits your Deno Deploy worker.
   // ---------------------------------------------------------------------------
-  const API_URL = 'https://carcheck-gxevta8f8ba6.mikeygabmiller.deno.net/';
+  const API_URL = 'https://carcheck.mikeygabmiller.deno.net/';
 
   async function runCheck({ listing, price, vin }) {
     const payload = { listing, price: Number(price) };
