@@ -1688,7 +1688,7 @@ async function callGemini(prompt, apiKey, options = {}) {
     contents: [{ role: "user", parts: [{ text: prompt }] }],
     generationConfig: {
       temperature: options.temperature ?? 0.4,
-      maxOutputTokens: options.maxTokens ?? 2048,
+      maxOutputTokens: options.maxTokens ?? 4096,
       responseMimeType: "application/json",
     },
   };
