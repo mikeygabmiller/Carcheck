@@ -3,48 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Second Opinion — Free Used Car Check by Mikey</title>
-  <meta name="description" content="Paste a Marketplace listing. Get a letter grade, a fair price estimate, and an honest take. Free, no signup. By Mikey in Snohomish County, WA.">
+  <title>The Buying Buddy — Free Used Car Listing Check</title>
+  <meta name="description" content="Paste a Marketplace listing. Get a grade, a fair price, and a message to send the seller. Built by a real mechanic. Free, no signup.">
 
-  <!-- Open Graph for sharing -->
-  <meta property="og:title" content="Second Opinion — Free Used Car Check">
-  <meta property="og:description" content="Don't get scammed on Marketplace. Paste the listing — I'll tell you what's wrong with it.">
+  <meta property="og:title" content="The Buying Buddy — Free Used Car Check">
+  <meta property="og:description" content="Don't buy that car until I check it. Free in 15 seconds.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://mikeygabmiller.github.io/Carcheck/">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Second Opinion — Free Used Car Check">
-  <meta name="twitter:description" content="Paste a Marketplace listing. Get a grade. Don't get scammed.">
+  <meta name="twitter:title" content="The Buying Buddy — Free Used Car Check">
+  <meta name="twitter:description" content="Paste a listing. Get a grade. Don't get scammed.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,600&family=JetBrains+Mono:wght@400;600;700&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- html2canvas for screenshot export -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-  <!-- DECORATIVE GRID BACKGROUND -->
-  <div class="grid-bg" aria-hidden="true"></div>
+  <!-- Notebook background -->
+  <div class="paper-bg" aria-hidden="true">
+    <div class="paper-margin"></div>
+  </div>
 
   <!-- HEADER -->
   <header class="site-header">
     <div class="wrap header-inner">
-      <a href="/" class="brand" aria-label="Second Opinion home">
-        <span class="brand-stamp">
-          <span class="brand-stamp-inner">SO</span>
-        </span>
+      <a href="/" class="brand" aria-label="The Buying Buddy home">
+        <span class="brand-mark">BB</span>
         <span class="brand-words">
-          <span class="brand-name">Second Opinion</span>
-          <span class="brand-tag">a free tool from Mikey</span>
+          <span class="brand-name">The Buying Buddy</span>
+          <span class="brand-tag">free used-car listing check</span>
         </span>
       </a>
-      <a href="https://mikeysdetailing.com" class="header-link" target="_blank" rel="noopener">
-        mikeysdetailing.com →
-      </a>
+      <span class="header-stamp">FREE</span>
     </div>
   </header>
 
@@ -56,114 +50,97 @@
 
         <!-- HERO -->
         <div class="hero">
-          <span class="hero-eyebrow">
-            <span class="dot dot-live"></span>
-            Free · No signup · 15 seconds
-          </span>
+          <div class="hero-meta">Before You Wire Any Money</div>
+
           <h1 class="hero-title">
-            Don't get <em>scammed</em><br>
-            on Marketplace.
+            Let me <span class="circle-word">check</span> that listing<br>
+            before you buy it.
           </h1>
+
           <p class="hero-sub">
-            Paste a used car listing. I'll grade it like a report card, estimate a fair price, and tell you exactly what to watch for. Then I'll write you a message to send the seller.
+            Paste any Marketplace, Craigslist, or OfferUp listing. I'll grade it, tell you what to watch for, and write you a message to send the seller. Like having a buddy who actually works on cars.
           </p>
         </div>
 
         <!-- FORM -->
         <form id="check-form" class="form-card">
-          <div class="form-card-header">
-            <span class="form-card-num">01</span>
-            <span class="form-card-title">Paste the listing</span>
-          </div>
+          <div class="form-tab">THE INSPECTION</div>
 
           <label class="field">
+            <span class="field-label">The Listing</span>
             <textarea
               id="listing"
               name="listing"
-              rows="7"
+              rows="6"
               required
-              placeholder="Title, description, mileage, condition — paste it all. The more I have, the better the grade."></textarea>
+              placeholder="Paste the title, mileage, description, everything..."></textarea>
           </label>
 
+          <div class="field-label field-label-spaced">Numbers</div>
           <div class="row">
             <label class="field field-half">
-              <span class="field-label">Asking price</span>
               <div class="input-prefix">
                 <span class="prefix">$</span>
-                <input type="number" id="price" name="price" required min="100" step="50" placeholder="8500">
+                <input type="number" id="price" name="price" required min="100" step="50" placeholder="Asking price">
               </div>
             </label>
-
             <label class="field field-half">
-              <span class="field-label">VIN <span class="hint">optional</span></span>
-              <input type="text" id="vin" name="vin" maxlength="17" placeholder="17 characters">
+              <input type="text" id="vin" name="vin" maxlength="17" placeholder="VIN (optional)">
             </label>
           </div>
 
           <button type="submit" id="submit-btn" class="btn-primary">
-            <span class="btn-label">Grade this listing</span>
+            <span class="btn-label">Run the check</span>
             <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
-          <p class="disclaimer">No data saved. 20 checks per IP per day.</p>
+          <p class="disclaimer">No signup · No data saved · Takes 15 seconds</p>
         </form>
+
+        <!-- SIGNATURE -->
+        <p class="founder-signature">
+          Built by <strong>a real mechanic</strong> — not a SaaS company.
+        </p>
 
         <!-- HOW IT WORKS -->
         <section class="how">
           <h2 class="section-eyebrow">How it works</h2>
           <ol class="how-list">
             <li>
-              <span class="how-num">1</span>
+              <span class="how-num">1.</span>
               <div>
                 <h3>You paste the listing.</h3>
-                <p>Marketplace, OfferUp, Craigslist — copy and paste the whole thing.</p>
+                <p>Marketplace, OfferUp, Craigslist — just copy the whole thing.</p>
               </div>
             </li>
             <li>
-              <span class="how-num">2</span>
+              <span class="how-num">2.</span>
               <div>
                 <h3>I cross-check against real data.</h3>
                 <p>NHTSA recalls, owner complaints, known problem patterns, and current market pricing.</p>
               </div>
             </li>
             <li>
-              <span class="how-num">3</span>
+              <span class="how-num">3.</span>
               <div>
                 <h3>You get a grade and a plan.</h3>
-                <p>Letter grade, fair price range, problems to watch for, and a message you can send the seller.</p>
+                <p>Letter grade, fair price range, what to watch for, and a message to send the seller.</p>
               </div>
             </li>
           </ol>
         </section>
 
         <!-- FOUNDER STRIP -->
-        <section class="founder">
-          <div class="founder-inner">
-            <div class="founder-text">
-              <span class="section-eyebrow">Who's behind this</span>
-              <h2>I'm Mikey. I detail cars in Snohomish County.</h2>
-              <p>I see what people get stuck with — interiors that reek of cigarettes, transmissions that won't shift, "garage kept" trucks with rust holes in the frame. This tool exists because I'm tired of watching people get hosed on Marketplace. Use it before you wire any money.</p>
-              <a href="https://mikeysdetailing.com" class="founder-link" target="_blank" rel="noopener">
-                See my detailing work →
-              </a>
-            </div>
-            <div class="founder-card" aria-hidden="true">
-              <div class="founder-card-line">
-                <span class="kv-key">Location</span>
-                <span class="kv-val">Snohomish, WA</span>
-              </div>
-              <div class="founder-card-line">
-                <span class="kv-key">Day job</span>
-                <span class="kv-val">Mobile detailing</span>
-              </div>
-              <div class="founder-card-line">
-                <span class="kv-key">Reviews</span>
-                <span class="kv-val">38+ ★★★★★</span>
-              </div>
-              <div class="founder-card-line">
-                <span class="kv-key">Why this?</span>
-                <span class="kv-val">Tired of the scams</span>
-              </div>
-            </div>
+        <section class="founder-strip">
+          <div class="founder-strip-inner">
+            <span class="section-eyebrow">Who's behind this</span>
+            <h2>I'm Mikey. I work on cars.</h2>
+            <p>
+              I see what people get stuck with — interiors that reek of cigarettes, transmissions that won't shift, "garage kept" trucks with rust holes in the frame. This tool exists because I'm tired of watching people get hosed on Marketplace.
+            </p>
+            <p>
+              Use it before you wire any money. It's free. I don't save your data. There's no signup. I built it because nobody else did.
+            </p>
+            <p class="founder-sign">— Mikey</p>
           </div>
         </section>
 
@@ -180,7 +157,7 @@
           </details>
           <details class="faq-item">
             <summary>What if I don't have the VIN?</summary>
-            <p>VIN is optional. Without it I work off the year/make/model/trim from the listing text. With it I can pull recall-specific data.</p>
+            <p>VIN is optional. Without it I work off the year/make/model/trim from the listing text. With it, I can pull recall-specific data.</p>
           </details>
           <details class="faq-item">
             <summary>Do you save my data?</summary>
@@ -188,7 +165,7 @@
           </details>
           <details class="faq-item">
             <summary>Why are you doing this?</summary>
-            <p>Marketing for my detailing business and honestly — I think it's fun. Most of my customers buy used. If this stops one of you from buying a salvage-title Altima, worth it.</p>
+            <p>Honestly? Most people buying used cars have no one to ask. I built this so they do.</p>
           </details>
         </section>
 
@@ -200,12 +177,10 @@
       <div class="wrap">
         <div class="loading">
           <div class="loading-stamp">
-            <div class="loading-stamp-inner">
-              <span class="loading-stamp-text">GRADING</span>
-              <div class="spinner"></div>
-            </div>
+            <span class="loading-stamp-text">CHECKING</span>
+            <div class="spinner"></div>
           </div>
-          <p class="loading-text">Cross-checking NHTSA and market data...</p>
+          <p class="loading-text">Running the numbers...</p>
           <p class="loading-sub">Usually takes 10–20 seconds</p>
           <ul class="loading-steps">
             <li class="loading-step active">Reading the listing</li>
@@ -225,21 +200,20 @@
           <span aria-hidden="true">←</span> Check another listing
         </button>
 
-        <!-- SHAREABLE REPORT CARD (this is the screenshot) -->
+        <!-- SHAREABLE REPORT CARD -->
         <div class="report-shell">
           <article id="report-card" class="report-card">
 
-            <!-- Report header -->
             <header class="rc-header">
               <div class="rc-header-left">
                 <div class="rc-brand">
-                  <span class="rc-brand-stamp">SO</span>
-                  <span class="rc-brand-text">SECOND OPINION</span>
+                  <span class="rc-brand-mark">BB</span>
+                  <span class="rc-brand-text">THE BUYING BUDDY</span>
                 </div>
                 <div class="rc-meta">
-                  <span id="rc-date">REPORT DATED —</span>
+                  <span id="rc-date">REPORT —</span>
                   <span class="rc-meta-sep">·</span>
-                  <span>mikeysdetailing.com</span>
+                  <span>thebuyingbuddy.com</span>
                 </div>
               </div>
               <div class="rc-header-right">
@@ -247,13 +221,11 @@
               </div>
             </header>
 
-            <!-- Subject line -->
             <div class="rc-subject">
-              <span class="rc-subject-label">SUBJECT</span>
+              <span class="rc-subject-label">RE:</span>
               <h2 id="rc-subject-text" class="rc-subject-text">2017 Honda Civic LX · 87,400 mi</h2>
             </div>
 
-            <!-- THE GRADE -->
             <div class="rc-grade-block">
               <div class="rc-grade-side">
                 <span class="rc-grade-label">FINAL<br>GRADE</span>
@@ -264,7 +236,6 @@
               </div>
             </div>
 
-            <!-- Price block -->
             <div class="rc-section rc-price">
               <div class="rc-price-row">
                 <div class="rc-price-cell">
@@ -282,9 +253,8 @@
               </div>
             </div>
 
-            <!-- Watch for these -->
             <div class="rc-section">
-              <h3 class="rc-section-title">Watch for these</h3>
+              <h3 class="rc-section-title">What to watch for</h3>
               <ul id="rc-watch" class="rc-watch-list">
                 <li><span class="rc-watch-num">01</span><span>AC compressor failure — known issue, $1,200+ to replace</span></li>
                 <li><span class="rc-watch-num">02</span><span>Mileage suggests timing belt due — ask for service records</span></li>
@@ -292,35 +262,29 @@
               </ul>
             </div>
 
-            <!-- Mikey's note -->
             <div class="rc-section rc-note">
               <div class="rc-note-header">
-                <span class="rc-note-signature">— Mikey</span>
                 <span class="rc-note-label">Honest take</span>
+                <span class="rc-note-signature">— Mikey</span>
               </div>
               <p id="rc-note-text" class="rc-note-text">
                 Civics are great cars but this one's priced like a unicorn. Offer $6,800 with the AC and timing belt as your leverage. If they won't budge, walk — there are five more of these on Marketplace this week.
               </p>
             </div>
 
-            <!-- Footer -->
             <footer class="rc-footer">
               <div class="rc-footer-left">
-                <span class="rc-footer-tool">Second Opinion</span>
-                <span class="rc-footer-url">mikeygabmiller.github.io/Carcheck</span>
+                <span class="rc-footer-tool">The Buying Buddy</span>
+                <span class="rc-footer-url">free used-car listing check</span>
               </div>
               <div class="rc-footer-right">
                 <span class="rc-footer-disclaim">Not a substitute for a PPI</span>
               </div>
             </footer>
-
-            <!-- Perforated edge decoration -->
-            <div class="rc-perf-top" aria-hidden="true"></div>
-            <div class="rc-perf-bottom" aria-hidden="true"></div>
           </article>
         </div>
 
-        <!-- SHARE ACTIONS -->
+        <!-- SHARE BAR -->
         <div class="share-bar">
           <button id="screenshot-btn" class="share-btn share-btn-primary">
             <span class="share-icon" aria-hidden="true">⬇</span>
@@ -336,22 +300,22 @@
           </button>
         </div>
 
-        <!-- MESSAGE TO SELLER -->
+        <!-- SELLER MESSAGE -->
         <section class="seller-section">
           <div class="seller-header">
-            <span class="section-eyebrow">Send to the seller</span>
-            <h2>Here's a message you can copy.</h2>
+            <span class="section-eyebrow">Send this to the seller</span>
+            <h2>A message you can copy.</h2>
             <p>Polite, specific, and uses what we found as leverage. Adjust before sending.</p>
           </div>
           <div class="seller-message-card">
-            <pre id="seller-message" class="seller-message">Hey — I'm interested in the Civic. I did some research and noticed the 2017 LX has a known AC compressor issue and timing belt is typically due around this mileage. Comparable ones in the area are listing in the $6,200–$7,400 range. I can come pick it up this week with cash for $6,800. Let me know if that works.</pre>
+            <pre id="seller-message" class="seller-message">Hey — I'm interested in the Civic. I did some research and the 2017 LX has a known AC compressor issue, and similar mileage Civics are listing in the $6,200–$7,400 range. I can pick it up this week with cash for $6,800. Let me know if that works.</pre>
             <button id="copy-seller-btn" class="seller-copy-btn">
               <span aria-hidden="true">⧉</span> Copy message
             </button>
           </div>
         </section>
 
-        <!-- CTA / NEXT STEPS -->
+        <!-- NEXT STEPS -->
         <section class="next-steps">
           <h2 class="section-eyebrow">Next steps</h2>
           <div class="next-grid">
@@ -360,15 +324,15 @@
               <h3>Check another listing</h3>
               <p>Compare a few before you commit.</p>
             </a>
-            <a href="https://mikeysdetailing.com" target="_blank" rel="noopener" class="next-card">
-              <span class="next-card-num">02</span>
-              <h3>Detail it before you sell</h3>
-              <p>Buying to flip? A real detail adds $500–$1,500 to your ask. I'm in Snohomish County.</p>
-            </a>
             <a href="#" id="share-friend-btn" class="next-card">
-              <span class="next-card-num">03</span>
+              <span class="next-card-num">02</span>
               <h3>Send this to a friend</h3>
               <p>Save someone you know from a bad deal.</p>
+            </a>
+            <a href="#" class="next-card next-card-disabled">
+              <span class="next-card-num">03</span>
+              <h3>Get a real PPI</h3>
+              <p>Always get an in-person inspection before you buy.</p>
             </a>
           </div>
         </section>
@@ -380,7 +344,7 @@
     <section id="error-view" class="view view-error hidden">
       <div class="wrap">
         <div class="error-card">
-          <span class="error-stamp">ERROR</span>
+          <span class="error-stamp">HEADS UP</span>
           <h2>Something went sideways.</h2>
           <p id="error-text">I couldn't process that listing. Try again with more detail in the description.</p>
           <button id="error-back-btn" class="btn-primary">
@@ -396,38 +360,29 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="wrap site-footer-inner">
-      <div class="footer-col footer-col-brand">
-        <div class="brand">
-          <span class="brand-stamp">
-            <span class="brand-stamp-inner">SO</span>
-          </span>
+      <div class="footer-brand">
+        <div class="brand brand-footer">
+          <span class="brand-mark">BB</span>
           <span class="brand-words">
-            <span class="brand-name">Second Opinion</span>
-            <span class="brand-tag">a free tool from Mikey</span>
+            <span class="brand-name">The Buying Buddy</span>
+            <span class="brand-tag">free used-car listing check</span>
           </span>
         </div>
-        <p class="footer-blurb">A free used-car listing checker built by Mikey, a mobile detailer in Snohomish County, Washington.</p>
+        <p class="footer-blurb">A free tool that grades used car listings and writes you a message to send the seller. Built by Mikey.</p>
       </div>
-      <div class="footer-col">
-        <span class="footer-eyebrow">Built by</span>
-        <a href="https://mikeysdetailing.com" target="_blank" rel="noopener">Mikey's Mobile Detailing</a>
-        <a href="tel:3607975831">(360) 797-5831</a>
-        <a href="mailto:book@mikeysdetailing.com">book@mikeysdetailing.com</a>
-      </div>
-      <div class="footer-col">
+      <div class="footer-fine">
         <span class="footer-eyebrow">Fine print</span>
-        <p class="footer-fine">Not a substitute for an in-person inspection. Always get a pre-purchase inspection (PPI) from a qualified mechanic before buying any used car.</p>
+        <p>Not a substitute for an in-person inspection. Always get a pre-purchase inspection (PPI) from a qualified mechanic before buying any used car.</p>
       </div>
     </div>
     <div class="footer-strip">
-      <span>© <span id="footer-year">2026</span> Mikey's Mobile Detailing · Snohomish County, WA</span>
-      <span>mikeysdetailing.com</span>
+      <span>© <span id="footer-year">2026</span> The Buying Buddy</span>
+      <span>Built by Mikey</span>
     </div>
   </footer>
 
-  <!-- Toast for copy confirmations -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script src="app.js"></script>
 </body>
-  </html>
+</html>
