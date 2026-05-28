@@ -1,11 +1,15 @@
 /* ============================================================================
-   SECOND OPINION — app.js
-   Handles view switching, share/copy/screenshot, and renders results.
-   Backend swap-in point is marked clearly below.
+   THE BUYING BUDDY — app.js
+   Notebook frontend. Hits the Deno worker. Handles share/copy/screenshot.
    ============================================================================ */
 
 (function () {
   'use strict';
+
+  // ---------------------------------------------------------------------------
+  // Config
+  // ---------------------------------------------------------------------------
+  const API_URL = 'https://carcheck.mikeygabmiller.deno.net/';
 
   // ---------------------------------------------------------------------------
   // DOM refs
@@ -79,63 +83,49 @@
   }
 
   // ---------------------------------------------------------------------------
-  // Render result into the report card
-  // Expected `result` shape (design against this, then make backend match):
+  // Render result
+  // Expected shape from worker:
   // {
-  //   subject: "2017 Honda Civic LX · 87,400 mi",
-  //   grade: "C+",                    // A+, A, A-, B+, B, B-, C+, C, C-, D, F
-  //   gradeBurn: "One-line summary of why",
-  //   asking: 8500,
-  //   fairLow: 6200,
-  //   fairHigh: 7400,
-  //   priceVerdict: "Overpriced",     // "Fair", "Underpriced", "Overpriced"
-  //   watch: ["Problem 1", "Problem 2", "Problem 3"],
-  //   note: "Mikey-voiced honest take, 1-3 sentences.",
-  //   sellerMessage: "Polite offer message to the seller."
+  //   subject, grade, gradeBurn, asking, fairLow, fairHigh,
+  //   priceVerdict, watch[], note, sellerMessage
   // }
   // ---------------------------------------------------------------------------
   function renderResult(result) {
-    // Subject
     $('rc-subject-text').textContent = result.subject || 'Used car listing';
 
-    // Date stamp
     const now = new Date();
     const dateStr = now.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
+      month: 'short', day: 'numeric', year: 'numeric',
     }).toUpperCase();
-    $('rc-date').textContent = `REPORT DATED ${dateStr}`;
+    $('rc-date').textContent = `REPORT ${dateStr}`;
 
-    // Grade
     const gradeEl = $('rc-grade');
     gradeEl.textContent = result.grade || '—';
     gradeEl.className = 'rc-grade ' + gradeClassFor(result.grade);
     $('rc-grade-burn').textContent = result.gradeBurn || '';
 
-    // Price block
-    $('rc-asking').textContent = result.asking ? `$${Number(result.asking).toLocaleString()}` : '—';
+    $('rc-asking').textContent = result.asking
+      ? `$${Number(result.asking).toLocaleString()}` : '—';
     if (result.fairLow && result.fairHigh) {
-      $('rc-fair').textContent = `$${Number(result.fairLow).toLocaleString()} – $${Number(result.fairHigh).toLocaleString()}`;
+      $('rc-fair').textContent =
+        `$${Number(result.fairLow).toLocaleString()} – $${Number(result.fairHigh).toLocaleString()}`;
     } else {
       $('rc-fair').textContent = '—';
     }
+
     const verdictEl = $('rc-price-verdict');
     verdictEl.textContent = result.priceVerdict || '—';
     verdictEl.className = 'rc-cell-value ' + priceVerdictClass(result.priceVerdict);
 
-    // Set asking color based on verdict too
     const askEl = $('rc-asking');
     askEl.className = 'rc-cell-value ' + priceVerdictClass(result.priceVerdict);
 
-    // Stamp (top-right)
     const stampEl = $('rc-stamp');
-    const stampText = stampFor(result.grade);
-    stampEl.textContent = stampText.text;
-    stampEl.style.color = stampText.color;
-    stampEl.style.borderColor = stampText.color;
+    const stampInfo = stampFor(result.grade);
+    stampEl.textContent = stampInfo.text;
+    stampEl.style.color = stampInfo.color;
+    stampEl.style.borderColor = stampInfo.color;
 
-    // Watch list
     const watchUl = $('rc-watch');
     watchUl.innerHTML = '';
     (result.watch || []).forEach((item, i) => {
@@ -146,10 +136,7 @@
       watchUl.appendChild(li);
     });
 
-    // Mikey's note
     $('rc-note-text').textContent = result.note || '';
-
-    // Seller message
     $('seller-message').textContent = result.sellerMessage || '';
   }
 
@@ -157,11 +144,8 @@
     if (!grade) return 'rc-grade-c';
     const first = String(grade).trim().toUpperCase().charAt(0);
     return {
-      'A': 'rc-grade-a',
-      'B': 'rc-grade-b',
-      'C': 'rc-grade-c',
-      'D': 'rc-grade-d',
-      'F': 'rc-grade-f',
+      'A': 'rc-grade-a', 'B': 'rc-grade-b', 'C': 'rc-grade-c',
+      'D': 'rc-grade-d', 'F': 'rc-grade-f',
     }[first] || 'rc-grade-c';
   }
 
@@ -170,23 +154,23 @@
     const v = String(verdict).toLowerCase();
     if (v.includes('over')) return 'rc-cell-bad';
     if (v.includes('under')) return 'rc-cell-good';
-    if (v.includes('fair') || v.includes('priced right')) return 'rc-cell-good';
+    if (v.includes('fair')) return 'rc-cell-good';
     return 'rc-cell-warn';
   }
 
   function stampFor(grade) {
-    if (!grade) return { text: 'CHECKED', color: '#7a7166' };
+    if (!grade) return { text: 'CHECKED', color: '#7a7368' };
     const first = String(grade).trim().toUpperCase().charAt(0);
     if (first === 'A') return { text: 'BUY IT', color: '#2d6a3e' };
     if (first === 'B') return { text: 'WORTH A LOOK', color: '#2d6a3e' };
-    if (first === 'C') return { text: 'INSPECT FIRST', color: '#a8721a' };
-    if (first === 'D') return { text: 'WALK AWAY', color: '#b8341f' };
-    if (first === 'F') return { text: 'HARD PASS', color: '#b8341f' };
-    return { text: 'CHECKED', color: '#7a7166' };
+    if (first === 'C') return { text: 'INSPECT FIRST', color: '#b8801f' };
+    if (first === 'D') return { text: 'WALK AWAY', color: '#da4b3c' };
+    if (first === 'F') return { text: 'HARD PASS', color: '#da4b3c' };
+    return { text: 'CHECKED', color: '#7a7368' };
   }
 
   // ---------------------------------------------------------------------------
-  // Form submit — placeholder. Wire your backend call here.
+  // Form submit → hit worker
   // ---------------------------------------------------------------------------
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -205,12 +189,7 @@
     animateLoadingSteps();
 
     try {
-      // ============================================================
-      // BACKEND CALL — replace this block with your Gemini fetch.
-      // Return an object matching the shape documented in renderResult().
-      // ============================================================
       const result = await runCheck({ listing, price, vin });
-
       stopLoadingSteps();
       renderResult(result);
       showView('result');
@@ -225,11 +204,6 @@
     }
   });
 
-  // ---------------------------------------------------------------------------
-  // Backend call — hits your Deno Deploy worker.
-  // ---------------------------------------------------------------------------
-  const API_URL = 'https://carcheck.mikeygabmiller.deno.net/';
-
   async function runCheck({ listing, price, vin }) {
     const payload = { listing, price: Number(price) };
     if (vin && vin.length === 17) payload.vin = vin.toUpperCase();
@@ -241,16 +215,14 @@
     });
 
     const data = await res.json();
-
     if (!res.ok) {
       throw new Error(data.error || 'Server error. Try again.');
     }
-
     return data;
   }
 
   // ---------------------------------------------------------------------------
-  // Navigation buttons
+  // Navigation
   // ---------------------------------------------------------------------------
   function goHome(e) {
     if (e) e.preventDefault();
@@ -258,15 +230,15 @@
   }
   backBtn.addEventListener('click', goHome);
   errorBackBtn.addEventListener('click', goHome);
-  anotherBtn.addEventListener('click', goHome);
+  if (anotherBtn) anotherBtn.addEventListener('click', goHome);
 
   // ---------------------------------------------------------------------------
-  // Screenshot the report card
+  // Screenshot
   // ---------------------------------------------------------------------------
   screenshotBtn.addEventListener('click', async () => {
     const node = $('report-card');
     if (!node || typeof html2canvas === 'undefined') {
-      showToast('Screenshot tool not loaded — try refresh');
+      showToast('Screenshot tool not loaded — refresh and try again');
       return;
     }
     screenshotBtn.disabled = true;
@@ -275,7 +247,7 @@
 
     try {
       const canvas = await html2canvas(node, {
-        backgroundColor: '#fbf6ec',
+        backgroundColor: '#faf6ee',
         scale: 2,
         useCORS: true,
         logging: false,
@@ -288,7 +260,7 @@
         .replace(/^-+|-+$/g, '')
         .slice(0, 40);
       a.href = dataUrl;
-      a.download = `second-opinion-${subject}.png`;
+      a.download = `buying-buddy-${subject}.png`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -303,7 +275,7 @@
   });
 
   // ---------------------------------------------------------------------------
-  // Copy report (plain-text version)
+  // Copy report
   // ---------------------------------------------------------------------------
   copyBtn.addEventListener('click', async () => {
     const text = buildPlainTextReport();
@@ -324,7 +296,7 @@
     const note = $('rc-note-text').textContent;
 
     return [
-      `SECOND OPINION — ${subject}`,
+      `THE BUYING BUDDY — ${subject}`,
       ``,
       `Grade: ${grade}`,
       burn,
@@ -333,32 +305,31 @@
       `Fair range: ${fair}`,
       `Verdict: ${verdict}`,
       ``,
-      `Watch for these:`,
+      `What to watch for:`,
       watch,
       ``,
-      `Mikey's take:`,
+      `Honest take:`,
       note,
       ``,
-      `Free used car check — mikeygabmiller.github.io/Carcheck`,
-      `Built by Mikey's Mobile Detailing in Snohomish County · mikeysdetailing.com`,
+      `Free used-car listing check.`,
+      `Built by a real mechanic, not a SaaS company.`,
     ].join('\n');
   }
 
   // ---------------------------------------------------------------------------
-  // Share link (Web Share API → fallback to copy)
+  // Share link
   // ---------------------------------------------------------------------------
   shareLinkBtn.addEventListener('click', async () => {
     const url = window.location.href.split('?')[0].split('#')[0];
-    const text = `I just used Second Opinion to grade a used car listing. Free tool: ${url}`;
+    const text = `I used The Buying Buddy to grade a used car listing. Free tool: ${url}`;
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Second Opinion — Used Car Check',
-          text,
-          url,
+          title: 'The Buying Buddy — Free Used Car Check',
+          text, url,
         });
         return;
-      } catch (_) { /* user dismissed — fall through */ }
+      } catch (_) { /* dismissed */ }
     }
     const ok = await copyToClipboard(url);
     showToast(ok ? 'Link copied' : "Couldn't copy link");
